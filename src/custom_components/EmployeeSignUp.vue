@@ -42,7 +42,7 @@ function signUp(e) {
     password: e.target.elements.password.value,
 	}
 
-	fetch('http://localhost:3001/admin/sign-up', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/sign-up', {
 	method: 'POST',
 	body: JSON.stringify(data),
   headers: {

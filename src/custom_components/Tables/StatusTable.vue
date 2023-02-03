@@ -39,7 +39,7 @@ function registerTransportPackage(e) {
   
   console.log(data)
   try{
-	fetch('http://localhost:3001/admin/register-transport-packages', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/register-transport-packages', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -58,7 +58,7 @@ function registerTransportPackage(e) {
 async function getTransportData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/admin/transports', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/transports', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

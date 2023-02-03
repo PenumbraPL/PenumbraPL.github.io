@@ -42,7 +42,7 @@ const data = {
   
   console.log(data)
   try{
-	fetch('http://localhost:3001/admin/register-transport', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/register-transport', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -62,7 +62,7 @@ const data = {
 async function getVehicleData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/admin/vehicles', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/vehicles', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ async function getVehicleData() {
 async function getMailData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/admin/mails', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/mails', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -43,7 +43,7 @@ async function registerPackage(e) {
   console.log('abc: ', localStorage.user)
   
   try {
-    await fetch('http://localhost:3001/register-package', {
+    await fetch('https://poczta-krakow-backend.azurewebsites.net/register-package', {
 	    method: 'POST',
 	    body: JSON.stringify(data),
       headers: {

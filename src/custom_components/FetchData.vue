@@ -15,7 +15,7 @@
     methods: {
       async fetchData() {
         console.log('fetch fetchData')      
-        const response = await fetch('http://localhost:3001/track-package');      
+        const response = await fetch('https://poczta-krakow-backend.azurewebsites.net/track-package');      
         this.tableData.rows = await response.json();
         console.log(this.tableData[0])
       },    

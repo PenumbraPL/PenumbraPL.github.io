@@ -23,7 +23,7 @@ import TransportTable2 from "@/custom_components/Tables/TransportTable2.vue";
 async function getTable1Data() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/admin/track-transport', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/track-transport', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ async function getTable1Data() {
 async function getTable2Data() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/admin/test-track-transport', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/test-track-transport', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

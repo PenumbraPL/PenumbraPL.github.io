@@ -18,7 +18,7 @@ const tableData= ref({
 })
 
 function getTableDataSync() {
-    fetch('http://localhost:3001/track-package', {
+    fetch('https://poczta-krakow-backend.azurewebsites.net/track-package', {
 	    method: 'GET'
 	  }).then(resp => {
       resp.json()
@@ -37,7 +37,7 @@ function getTableDataSync() {
 async function getTableData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://localhost:3001/track-package', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/track-package', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

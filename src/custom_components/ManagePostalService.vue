@@ -37,7 +37,7 @@ const data = {
   const user = JSON.parse(localStorage.user)
 
   try{
-	fetch('http://localhost:3001/admin/register-vehicle', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/register-vehicle', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -63,7 +63,7 @@ function registerMail(e) {
   const user = JSON.parse(localStorage.user)
 
   try{
-	fetch('http://localhost:3001/admin/mails', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/mails', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
