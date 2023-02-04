@@ -16,7 +16,7 @@ import EmployeePresentationView from "../custom_components/EmployeePresentationV
 import EmployeeSignUpView from "../custom_components/EmployeeSignUp.vue"
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
