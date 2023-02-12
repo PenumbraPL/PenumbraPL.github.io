@@ -78,7 +78,7 @@ function signIn(e) {
                   <h4
                     class="text-white font-weight-bolder text-center mt-2 mb-0"
                   >
-                    Sign in
+                    Zaloguj się
                   </h4>
                 </div>
               </div>
@@ -106,7 +106,7 @@ function signIn(e) {
                     id="rememberMe"
                     labelClass="mb-0 ms-3"
                     checked
-                    >Remember me</MaterialSwitch
+                    >Zapamiętaj mnię</MaterialSwitch
                   >
 
                   <div class="text-center">
@@ -115,15 +115,15 @@ function signIn(e) {
                       variant="gradient"
                       color="success"
                       fullWidth
-                      >Sign in</MaterialButton
+                      >Zaloguj się</MaterialButton
                     >
                   </div>
                   <p class="mt-4 text-sm text-center">
-                    Don't have an account?
+                    Nie masz konta?
                     <a
                       href=".\sign-up"
                       class="text-success text-gradient font-weight-bold"
-                      >Sign up</a
+                      >Zarejestruj się</a
                     >
                   </p>
                 </form>

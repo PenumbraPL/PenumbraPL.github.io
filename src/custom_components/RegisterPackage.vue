@@ -158,7 +158,7 @@ async function registerPackage(e) {
           type="number"
           /> -->
 
-        <div class="row justify-content-center">Poczta wysylkowa: 
+        <div class="row justify-content-center">Poczta docelowa: 
         <div class="col-4">
         <div class="dropdown">
             <MaterialButton
@@ -172,7 +172,7 @@ async function registerPackage(e) {
               :area-expanded="showDropdown"
               @click="showDropdown = !showDropdown"
             >
-            {{sendMail.nazwa}}
+            {{reseveMail.nazwa}}
             </MaterialButton>
 
             <ul
@@ -188,7 +188,7 @@ async function registerPackage(e) {
         </div>
       </div>
 
-        <div class="row justify-content-center">Poczta docelowa:
+        <div class="row justify-content-center">Poczta wysyłkowa:
       <div class="col-4">
         <div class="dropdown">
             <MaterialButton
@@ -202,7 +202,7 @@ async function registerPackage(e) {
               :area-expanded="showDropdown"
               @click="showDropdown = !showDropdown"
             >
-            {{reseveMail.nazwa}}
+            {{sendMail.nazwa}}
             </MaterialButton>
 
             <ul

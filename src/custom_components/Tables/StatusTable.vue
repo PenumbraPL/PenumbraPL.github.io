@@ -32,7 +32,7 @@ function registerTransportPackage(e) {
 	e.preventDefault()
   const data = {
     transport_id: trans.value.transport_id,
-    status: "Nadano",
+    status: state.value,
     rows: checkedPackages.value
   }
   const user = JSON.parse(localStorage.user)
@@ -168,11 +168,14 @@ onBeforeMount(async () => {
               <li @click="chooseState('Dostarczono')">
                   Dostarczono
               </li>
-              <li @click="chooseState('Przekazano')">
-                  Przekazano
+              <li @click="chooseState('Odebrano')">
+                  Odebrano
               </li>
-              <li @click="chooseState('Zwrocono')">
-                  Zwrocono
+              <li @click="chooseState('Nadano')">
+                  Nadano
+              </li>
+              <li @click="chooseState('W trasie')">
+                  W trasie
               </li>
             </ul>
           </div>

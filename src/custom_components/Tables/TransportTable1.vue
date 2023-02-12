@@ -122,7 +122,16 @@ function check(transport_id, vehicle, destination){
   <section class="pt-5">
     <div class="container">
       
-
+      <div class="form-label" v-if="status != 0 && status !== 200">
+      <MaterialAlert color="danger" dismissible>
+        Blad wprowadzanych danych - dane nie zostaly wprowadzone do bazy
+      </MaterialAlert>
+      </div>
+      <div class="form-label" v-if="status != 0 && status == 200">
+          <MaterialAlert color="success" dismissible>
+            Dane zostaly wprowadzone poprawnie
+          </MaterialAlert>
+      </div>  
 
       <div class="container">
       <form  role="form" class="text-start" method="post" v-on:submit="registerTransport">

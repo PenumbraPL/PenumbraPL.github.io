@@ -36,14 +36,7 @@ import imgSigninCover from "@/assets/img/signin-cover.png";
                 route="admin-users"
               />
             </div>
-            <div class="col-md-3 mt-md-0 mt-5">
-              <ExampleCard
-                classes="shadow-lg"
-                title="Status paczek"
-                image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="admin-package-status"
-              />
-            </div>
+
           </div>   
           <div class="row mt-4">
             <div class="col-md-3 mt-md-0 mt-5">
@@ -88,14 +81,14 @@ import imgSigninCover from "@/assets/img/signin-cover.png";
                 route="admin-delivered-packages"
               />
             </div>
-            <!-- <div class="col-md-3 mt-md-0 mt-5">
-            <ExampleCard
-                class="shadow-lg"
+            <div class="col-md-3 mt-md-0 mt-5">
+              <ExampleCard
+                classes="shadow-lg"
                 title="Status paczek"
-                image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/contact.jpg"
-                route="package-status"
-              /> 
-            </div> -->
+                image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
+                route="admin-package-status"
+              />
+            </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
@@ -107,7 +100,7 @@ import imgSigninCover from "@/assets/img/signin-cover.png";
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Wyświetl paczki"
+                title="Wyświetl aktualizacje"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
                 route="admin-track-package"
               />

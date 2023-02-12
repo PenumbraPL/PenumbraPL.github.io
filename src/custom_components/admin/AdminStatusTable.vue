@@ -189,7 +189,7 @@ onBeforeMount(async () => {
               aria-labelledby="dropdownMenuButton"
             >
               <li v-for="vehicle in vehicles.rows" @click="chooseVehicle(  vehicle  )">
-                  {{ vehicle.marka + ' ' + vehicle.model }}
+                  {{ vehicle.marka + ' ' + vehicle.model + ' ' + vehicle.rejestracja}}
               </li>
             </ul>
           </div>
@@ -315,7 +315,7 @@ onBeforeMount(async () => {
       <p class="lead mb-0"> Poczta docelowa: {{ reseveMail.nazwa }} </p>
     </div>
     <div class="col-sm-4">
-      <p class="lead mb-0"> Pojazd: {{ vehicle.marka + ' ' + vehicle.model }}</p>
+      <p class="lead mb-0"> Pojazd: {{ vehicle.marka + ' ' + vehicle.model + ' ' + vehicle.rejestracja}}</p>
     </div>
       </div>
 
