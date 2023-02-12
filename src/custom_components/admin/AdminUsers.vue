@@ -20,7 +20,7 @@ const tableData= ref({
 async function getTableData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin-users', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin-users', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

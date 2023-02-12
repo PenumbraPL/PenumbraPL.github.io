@@ -28,7 +28,7 @@ function signIn(e) {
         password: e.target.elements.password.value,
     }
     
-    fetch('http://poczta-krakow-backend.azurewebsites.net/sign-in', {
+    fetch('https://poczta-krakow-backend.azurewebsites.net/sign-in', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

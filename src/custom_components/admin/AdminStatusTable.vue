@@ -63,7 +63,7 @@ if(!isNull.value){
   
   console.log(data)
   try{
-	fetch('http://poczta-krakow-backend.azurewebsites.net/admin/update-package', {
+	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/update-package', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -84,7 +84,7 @@ if(!isNull.value){
 async function getTransportData1() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/mails', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/mails', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ async function getTransportData1() {
 async function getTransportData2() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/admin-vehicles', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/admin-vehicles', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

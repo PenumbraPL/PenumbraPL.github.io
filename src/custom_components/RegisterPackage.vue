@@ -46,7 +46,7 @@ function chooseSendMail(point){
 async function getMailData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/mails', {
+    const resp = await fetch('https://poczta-krakow-backend.azurewebsites.net/admin/mails', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ async function registerPackage(e) {
   console.log('abc: ', localStorage.user)
   
   try {
-    await fetch('http://poczta-krakow-backend.azurewebsites.net/register-package', {
+    await fetch('https://poczta-krakow-backend.azurewebsites.net/register-package', {
 	    method: 'POST',
 	    body: JSON.stringify(data),
       headers: {
