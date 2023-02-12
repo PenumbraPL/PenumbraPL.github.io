@@ -2,42 +2,25 @@
 import { ref, onMounted, onUnmounted, onBeforeMount } from "vue";
 
 //example components
-import NavbarDefault from "../examples/navbars/NavbarDefault.vue";
-import DefaultFooter from "../examples/footers/FooterDefault.vue";
-import Header from "../examples/Header.vue";
+import NavbarDefault from "@/examples/navbars/NavbarDefault.vue";
+import DefaultFooter from "@/examples/footers/FooterDefault.vue";
+import Header from "@/examples/Header.vue";
 
 //images
 import vueMkHeader from "@/assets/img/vue-mk-header.jpg";
-import TrackTable from "@/custom_components/Tables/TrackTable.vue";
+import AdminMailTable from "@/custom_components/admin/AdminMailsTable.vue";
 
 // table data
 
 const tableData= ref({
-  headers: ["Opis", "Status", "Wysylajacy", "Odbierajacy", "Waga", "Punkt docelowy"],
+  headers: ["Poczta_Id", "Nazwa", "Miejscowosc"],
   rows: []
 })
-
-function getTableDataSync() {
-    fetch('http://poczta-krakow-backend.azurewebsites.net/track-package', {
-	    method: 'GET'
-	  }).then(resp => {
-      resp.json()
-        .then(packages => { 
-          tableData.rows = packages
-
-          // console.log('tableData:', tableData)
-
-          return tableData
-        })
-        .catch(err => console.log(err))
-    }).catch(err => console.log(err));
-  return tableData
-}
 
 async function getTableData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/track-package', {
+    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/admin-mails', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +72,7 @@ onUnmounted(() => {
               class="text-white pt-3 me-2"
               :style="{ display: 'inline-block ' }"
             >
-              Historia zamowien
+              Poczty
             </h1>
           </div>
         </div>
@@ -97,18 +80,8 @@ onUnmounted(() => {
     </div>
   </Header>
 
-  <!-- <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-    <div class="row"><div class="col-6 col-md-4"></div>
-    <div class="col-6 col-md-4">
-      <h2 class="mb-0">Historia zamowien</h2>
-    </div>
-  </div> -->
   <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-
-    <!-- <FetchData/> -->
-    <TrackTable v-bind="tableData" />
-    <!-- <TrackTable/> -->
-
+    <AdminMailTable v-bind="tableData" />
   </div>
 
   <DefaultFooter />

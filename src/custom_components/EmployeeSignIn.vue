@@ -28,7 +28,7 @@ function signIn(e) {
         password: e.target.elements.password.value,
     }
     
-    fetch('https://poczta-krakow-backend.azurewebsites.net/admin/sign-in', {
+    fetch('http://poczta-krakow-backend.azurewebsites.net/admin/sign-in', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -41,7 +41,8 @@ function signIn(e) {
         response.json()
           .then((user) => {
             localStorage.user = JSON.stringify({
-              userId: user.userId,
+              workerId: user.pracownikId,
+              isAdmin: user.admin,
               authorization: 'Basic ' + window.btoa(data.email + ":" + data.password)
             })
             router.push("/admin/employee")

@@ -9,25 +9,30 @@ import ManageMailView from "../custom_components/ManagePostalService.vue"
 import RegisterPackageView from "../custom_components/RegisterPackage.vue"
 import TrackPackagesView from "../custom_components/TrackPackages.vue"
 import TrackTransportsView from "../custom_components/TrackTransports.vue"
-import UpdatePackageView from  "../custom_components/UpdatePackageStatus.vue"
 import EmployeeSignInView from "../custom_components/EmployeeSignIn.vue"
-import AdminPresentationViewView from "../custom_components/AdminPresentationView.vue"
+import AdminPresentationView from "../custom_components/AdminPresentationView.vue"
 import EmployeePresentationView from "../custom_components/EmployeePresentationView.vue"
 import EmployeeSignUpView from "../custom_components/EmployeeSignUp.vue"
+import AdminTrackPackagesView from "../custom_components/admin/AdminTrackPackages.vue"
+import AdminSignInView from "../custom_components/AdminSignIn.vue";
+import AdminUsersView from "../custom_components/admin/AdminUsers.vue"
+import AdminVehiclesView from "../custom_components/admin/AdminVehicles.vue"
+import AdminPackageView from "../custom_components/admin/AdminPackage.vue"
+import AdminPackageStatusView from "../custom_components/admin/AdminShowPackageStatus.vue"
+import AdminDeliveredPackagesView from "../custom_components/admin/AdminDelivered.vue"
+import AdminTransportsView from "../custom_components/admin/AdminTransports.vue"
+import AdminPackageTransportsView from "../custom_components/admin/AdminPackageTransports.vue"
+import AdminMailsView from "../custom_components/admin/AdminMails.vue"
+import AdminWorkersView from "../custom_components/admin/AdminWorkers.vue"
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
       name: "presentation",
       component: PresentationView,
     },
-    // {
-    //   path: "/pages/landing-pages/about-us",
-    //   name: "about",
-    //   component: AboutView,
-    // },
     {
       path: "/pages/landing-pages/author",
       name: "author",
@@ -82,28 +87,18 @@ const router = createRouter({
         }
       },
     },
-    // {
-    //   path: "/update-package",
-    //   name: "update-package",
-    //   component: UpdatePackageView,
-    //   beforeEnter: (to, from) => {
-    //     if(!localStorage.user){
-    //       return {
-    //         path: '/sign-in',
-    //         query: { redirect: to.fullPath },
-    //       }
-    //     }
-    //   },
-    // },
     {
       path: "/admin",
       name: "admin-presentation-page",
-      component: AdminPresentationViewView,
+      component: AdminPresentationView,
       beforeEnter: (to, from) => {
         if(!localStorage.user){
-          return {
-            path: '/admin/sign-in',
-            query: { redirect: to.fullPath },
+          const user = JSON.parse(localStorage.user)
+          if(!user['isAdmin']){
+            return {
+              path: '/admin/admin-sign-in',
+              query: { redirect: to.fullPath },
+            }
           }
         }
       },
@@ -115,20 +110,25 @@ const router = createRouter({
       beforeEnter: (to, from) => {
         if(!localStorage.user){
           return {
-            path: '/admin/sign-in',
+            path: '/admin/admin-sign-in',
             query: { redirect: to.fullPath },
           }
         }
       },
     },
     {
-      path: "/admin/sign-in",
+      path: "/admin/admin-sign-in",
       name: "admin-sign-in",
+      component: AdminSignInView,
+    },
+    {
+      path: "/admin/sign-in",
+      name: "employee-sign-in",
       component: EmployeeSignInView,
     },
     {
       path: "/admin/sign-up",
-      name: "admin-sign-up",
+      name: "employee-sign-up",
       component: EmployeeSignUpView,
     },
     {
@@ -151,7 +151,7 @@ const router = createRouter({
       beforeEnter: (to, from) => {
         if(!localStorage.user){
           return {
-            path: '/admin/sign-in',
+            path: '/admin/admin-sign-in',
             query: { redirect: to.fullPath },
           }
         }
@@ -164,7 +164,137 @@ const router = createRouter({
       beforeEnter: (to, from) => {
         if(!localStorage.user){
           return {
-            path: '/admin/sign-in',
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-track-package",
+      name: "admin-track-package",
+      component: AdminTrackPackagesView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-users",
+      name: "admin-users",
+      component: AdminUsersView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-vehicles",
+      name: "admin-vehicles",
+      component: AdminVehiclesView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-packages",
+      name: "admin-packages",
+      component: AdminPackageView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-package-status",
+      name: "admin-package-status",
+      component: AdminPackageStatusView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-workers",
+      name: "admin-workers",
+      component: AdminWorkersView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-transports",
+      name: "admin-transports",
+      component: AdminTransportsView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-package-transports",
+      name: "admin-package-transports",
+      component: AdminPackageTransportsView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-delivered-packages",
+      name: "admin-delivered-packages",
+      component: AdminDeliveredPackagesView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
+            query: { redirect: to.fullPath },
+          }
+        }
+      },
+    },
+    {
+      path: "/admin/admin-mails",
+      name: "admin-mails",
+      component: AdminMailsView,
+      beforeEnter: (to, from) => {
+        if(!localStorage.user){
+          return {
+            path: '/admin/admin-sign-in',
             query: { redirect: to.fullPath },
           }
         }

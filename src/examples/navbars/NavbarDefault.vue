@@ -35,11 +35,43 @@ function dropDown(){
 
 function signOut(){
   console.log("Sign out")
+  const user = JSON.parse(localStorage.user)
   if(islogged()){
     localStorage.removeItem('user')
   }
+  // ?
   logged.value = islogged()
-  router.push('/')
+  let destination = '/'
+  const workerId = user['workerId'] ? true : false
+  const isAdmin = user['isAdmin']
+  if(workerId){
+    if(isAdmin){
+      destination = '/admin'
+    }else{
+      destination = '/admin/employee'
+    }
+  }
+  router.push(destination)
+}
+
+function checkMainPage(){
+  if(islogged()){
+    //console.log(localStorage.user)
+    const user = JSON.parse(localStorage.user)
+    const userId = user['userId'] ? true : false
+    const workerId = user['workerId'] ? true : false
+    const isAdmin = user['isAdmin']
+    if(userId){
+      return 'presentation'
+    }
+    else if(workerId){
+      if(isAdmin){
+        return 'admin-presentation-page'
+      }
+      return 'employee-presentation-page'
+    }
+  }
+  return 'presentation'
 }
 
 const props = defineProps({
@@ -149,12 +181,12 @@ watch(
             ? 'text-dark font-weight-bolder ms-sm-3'
             : 'text-white font-weight-bolder ms-sm-3'
         ]"
-        :to="{ name: 'presentation' }"
+        :to="{ name: checkMainPage() }"
         rel="tooltip"
         title="Strona glowna"
         data-placement="bottom"
       >
-
+ <!-- 'presentation' -->
     <MaterialAvatar :image="mailIcon" alt="Image placeholder" size="md" />
         Krakowski-kurier
       </RouterLink>

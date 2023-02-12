@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeMount } from "vue";
 
 // example components
 import NavbarDefault from "@/examples/navbars/NavbarDefault.vue";
@@ -16,19 +16,45 @@ import DefaultFooter from "../examples/footers/FooterDefault.vue";
  
 import vueMkHeader from "@/assets/img/vue-mk-header.jpg";
 
-
+onBeforeMount(async () => {
+  mails.value.rows = await getMailData();
+});
 
 onMounted(() => {
   setMaterialInput();
 });
 
 let status = ref(0)
+const mails = ref({
+  rows: []
+})
+let mail = ref(0)
 
+function chooseMail(point){
+  mail.value = point
+}
+
+async function getMailData() {
+  try {
+    const user = JSON.parse(localStorage.user)
+    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/mails', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: user.authorization
+        },
+    })
+    return resp.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 function registerVehicle(e) {
 	e.preventDefault()
 const data = {
-    mail_id: e.target.elements.mail_id.value,
+    // mail_id: e.target.elements.mail_id.value,
+    mail_id: mail.value.punkt_id,
     brand: e.target.elements.brand.value,
     model: e.target.elements.model.value,
     number_plate: e.target.elements.number_plate.value,
@@ -37,7 +63,7 @@ const data = {
   const user = JSON.parse(localStorage.user)
 
   try{
-	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/register-vehicle', {
+	fetch('http://poczta-krakow-backend.azurewebsites.net/admin/register-vehicle', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -63,7 +89,7 @@ function registerMail(e) {
   const user = JSON.parse(localStorage.user)
 
   try{
-	fetch('https://poczta-krakow-backend.azurewebsites.net/admin/mails', {
+	fetch('http://poczta-krakow-backend.azurewebsites.net/admin/mails', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -193,12 +219,43 @@ function registerMail(e) {
           :label="{ text: 'Model', class: 'form-label' }"
           type="text"
           />   
-          <MaterialInput
+          <!-- <MaterialInput
           id="mail_id"
           class="input-group-outline my-3"
           :label="{ text: 'Poczta', class: 'form-label' }"
           type="number"
-          />
+          /> -->
+
+          <div class="row justify-content-center">Poczta: 
+        <div class="col-4">
+        <div class="dropdown">
+            <MaterialButton
+              id="mail_id"
+              variant="gradient"
+              color="success"
+              class="dropdown-toggle"
+              :class="{ show: showDropdown }"
+              @focusout="showDropdown = false"
+              data-bs-toggle="dropdown"
+              :area-expanded="showDropdown"
+              @click="showDropdown = !showDropdown"
+            >
+            {{mail.nazwa}}
+            </MaterialButton>
+
+            <ul
+              class="dropdown-menu px-2 py-3"
+              :class="{ show: showDropdown }"
+              aria-labelledby="dropdownMenuButton"
+            >
+            <li v-for="mail in mails.rows" @click="chooseMail(  mail  )">
+                  {{ mail.nazwa }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
           <MaterialInput
           id="number_plate"
           class="input-group-outline my-3"

@@ -9,65 +9,73 @@ import imgSigninCover from "@/assets/img/signin-cover.png";
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="row mt-4">
-
+         <div class="row mt-4">
+ 
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Autor"
+                title="Paczki"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="author"
+                route="admin-packages"
               />
               
             </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="mt-5"
-                title="Zaloguj sie - Uzytkownik"
+                title="Pojazdy"
                 :image="imgSigninCover"
-                route="signin-basic"
+                route="admin-vehicles"
               />
             </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="mt-5"
-                title="Zaloguj sie - Pracownik"
+                title="Uzytkownicy"
                 :image="imgSigninCover"
-                route="admin-sign-in"
+                route="admin-users"
               />
             </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Zarejestruj sie - Uzytkownik"
+                title="Status paczek"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="signup-basic"
+                route="admin-package-status"
               />
             </div>
-          </div>       
+          </div>   
           <div class="row mt-4">
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Zarejestruj sie - Pracownik"
+                title="Pracownicy"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="admin-sign-up"
+                route="admin-workers"
               />
             </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Zarejestruj paczke"
+                title="Poczty"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="register-package"
+                route="admin-mails"
               />
             </div>
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Sledz paczke"
+                title="Transporty"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="track-package"
+                route="admin-transports"
+              />
+            </div>
+            <div class="col-md-3 mt-md-0 mt-5">
+              <ExampleCard
+                classes="shadow-lg"
+                title="Paczki Transportów"
+                image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
+                route="admin-package-transports"
               />
             </div>
             </div>
@@ -75,25 +83,33 @@ import imgSigninCover from "@/assets/img/signin-cover.png";
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
-                title="Sledz transporty"
+                title="Paczki dostarczone"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
-                route="admin-track-transports"
+                route="admin-delivered-packages"
               />
             </div>
-            <div class="col-md-3 mt-md-0 mt-5">
+            <!-- <div class="col-md-3 mt-md-0 mt-5">
             <ExampleCard
                 class="shadow-lg"
                 title="Status paczek"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/contact.jpg"
                 route="package-status"
               /> 
-            </div>
+            </div> -->
             <div class="col-md-3 mt-md-0 mt-5">
               <ExampleCard
                 classes="shadow-lg"
                 title="Zarzadaj poczta"
                 image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
                 route="manage-mail-service"
+              />
+            </div>
+            <div class="col-md-3 mt-md-0 mt-5">
+              <ExampleCard
+                classes="shadow-lg"
+                title="Wyświetl paczki"
+                image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/pages/author.jpg"
+                route="admin-track-package"
               />
             </div>
             </div>            

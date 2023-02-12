@@ -2,42 +2,25 @@
 import { ref, onMounted, onUnmounted, onBeforeMount } from "vue";
 
 //example components
-import NavbarDefault from "../examples/navbars/NavbarDefault.vue";
-import DefaultFooter from "../examples/footers/FooterDefault.vue";
-import Header from "../examples/Header.vue";
+import NavbarDefault from "@/examples/navbars/NavbarDefault.vue";
+import DefaultFooter from "@/examples/footers/FooterDefault.vue";
+import Header from "@/examples/Header.vue";
 
 //images
 import vueMkHeader from "@/assets/img/vue-mk-header.jpg";
-import TrackTable from "@/custom_components/Tables/TrackTable.vue";
+import AdminTransportsTable from "@/custom_components/admin/AdminTransportsTable.vue";
 
 // table data
 
 const tableData= ref({
-  headers: ["Opis", "Status", "Wysylajacy", "Odbierajacy", "Waga", "Punkt docelowy"],
+  headers: ["Transport_Id", "Pojazd_Id", "Punkt nadania", "Punkt odbioru"],
   rows: []
 })
-
-function getTableDataSync() {
-    fetch('http://poczta-krakow-backend.azurewebsites.net/track-package', {
-	    method: 'GET'
-	  }).then(resp => {
-      resp.json()
-        .then(packages => { 
-          tableData.rows = packages
-
-          // console.log('tableData:', tableData)
-
-          return tableData
-        })
-        .catch(err => console.log(err))
-    }).catch(err => console.log(err));
-  return tableData
-}
 
 async function getTableData() {
   try {
     const user = JSON.parse(localStorage.user)
-    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/track-package', {
+    const resp = await fetch('http://poczta-krakow-backend.azurewebsites.net/admin/admin-transports', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +72,7 @@ onUnmounted(() => {
               class="text-white pt-3 me-2"
               :style="{ display: 'inline-block ' }"
             >
-              Historia zamowien
+              Transporty
             </h1>
           </div>
         </div>
@@ -106,7 +89,7 @@ onUnmounted(() => {
   <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
 
     <!-- <FetchData/> -->
-    <TrackTable v-bind="tableData" />
+    <AdminTransportsTable v-bind="tableData" />
     <!-- <TrackTable/> -->
 
   </div>
